@@ -6,10 +6,15 @@ class Room:
         self.name = name
         self.description = description
 
+        self.n_to = None
+        self.s_to = None
+        self.w_to = None
+        self.e_to = None
+
     def __str__(self):
 
-        p = f"Room Name:   {self.name}\n"
-        return p
+        q = f"{self.name}\n{self.description}\n"
+        return q
 
     def __repr__(self):
         return f"Name({repr(self.name)})"

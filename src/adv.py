@@ -1,5 +1,5 @@
 from room import Room
-from player import Player
+# from player import Player
 
 # Declare all the rooms
 
@@ -38,7 +38,20 @@ room['treasure'].s_to = room['narrow']
 # Main
 #
 
+# print(room["outside"])
+
+# a = input('Please enter a direction: ')
+
+# if (a == 'n'):
+#     print("The player has moved into " + str(room["foyer"]))
+# b = input('Enter a direction: ')
+
+# if(b == 's'):
+#     print("The player has moved: " + str(room["outside"]))
+
 # Make a new player object that is currently in the 'outside' room.
+
+player_location = room["outside"]
 
 
 
@@ -52,3 +65,44 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+while True:
+    # print(player_location.name)
+    # print(player_location.description)
+
+
+
+    dir = input("Enter a direction to move: ")
+
+    if dir == 'n':
+        if player_location.n_to is None:
+            print("You can't go that way!")
+        else:
+            player_location = player_location.n_to # use getattr() instead
+            print(f"\nYou have made it to the", player_location)
+    
+    elif dir == 's':
+        if player_location.s_to == None:
+            print("You can't go that way!")
+        else:
+            player_location = player_location.s_to
+            print(player_location)
+    elif dir == 'e':
+        if player_location.e_to == None:
+            print("You can't go that way")
+        else:
+            player_location = player_location.e_to
+            print(player_location)
+        
+    elif dir == 'w':
+        if player_location.w_to == None:
+            print("You can't go that way!")
+        else:
+            player_location = player_location.w_to
+            print(player_location)
+    elif dir == 'q':
+        break
+    else:
+        print(f"{dir} is not a direction I can move to. If you want to quit, please type 'q'.")
+
+    
